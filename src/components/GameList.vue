@@ -6,15 +6,15 @@ import { useGamesStore } from "@/stores/games";
 export default {
   setup() {
     const gamesStore = useGamesStore();
-    const search = ref(gamesStore.search);
+    const search = ref<String>(gamesStore.search);
 
-    const filteredGames = computed(() => {
+    const filteredGames = computed<{ slug: String, id: Number, game_thumbnail: String }>(() => {
       let filter = search.value;
       gamesStore.setSearch(filter);
       if (!filter.length) {
         return gamesStore.games;
       }
-      return Object.values(gamesStore.games).filter((game: { title: string }) =>
+      return Object.values(gamesStore.games).filter((game: { title: String }) =>
         game.title.toLowerCase().includes(filter.toLowerCase())
       );
     });

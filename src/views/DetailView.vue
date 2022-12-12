@@ -2,7 +2,7 @@
 import { useGamesStore } from "@/stores/games";
 
 const gamesStore = useGamesStore();
-const game: { game_background: string; title: string; content: string } =
+const game: { title: String, content: String, game_background: String } =
   gamesStore.games[window.location.pathname.substring(1)];
 </script>
 
